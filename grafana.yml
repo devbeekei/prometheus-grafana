@@ -1,0 +1,24 @@
+replicas: 1
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  path: /
+  hosts:
+    - grafana.169.56.84.41.nip.io
+
+persistence:
+  type: pvc
+  enabled: false
+  # storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+  # annotations: {}
+  finalizers:
+    - kubernetes.io/pvc-protection
+
+# Administrator credentials when not using an existing secret (see below)
+adminUser: admin
+adminPassword: passw0rd
